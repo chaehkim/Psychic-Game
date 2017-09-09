@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Are You Psychic?</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Guess what letter I am thinking of?</h1>
+    <h2>You guessed...</h2><span id="userGuessField"></span>
+    <h2>Computer guessed</h2><span id="computerGuessField"></span>
+    <h2>Your total Wins:</h2><span id="userWins"></span>
+    <h2>Your total Losses:</h2><span id="userLosses"></span>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+            // Generate a random letter
+            // Let user enter a guess
+            // Compare the results
+            // If match, then add a Win
+            // If no match, then add a loss.
+
+            var winsCount = 0;
+            var lossesCount = 0;
+            var userGuess = "";
+            var allChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+            document.onkeyup = function(event) {
+                // Sets user key input to User's Guess
+                var userGuess = event.key;
+                // Randomly chooses a choice from the options array. This is the Computer's guess.
+                var computerGuess = allChoices[Math.floor(Math.random() * 26)];
+
+                if (userGuess === computerGuess) {
+                    winsCount++;
+                } else {
+                    lossesCount++;
+                }
+           // Write the results to the webpage
+                
+			$("#userGuessField").append(userGuess);
+			$("#computerGuessField").html(computerGuess);
+			$("#userWins").html(winsCount);
+			$("#userLosses").html(lossesCount);
+   }
+        });
+</script>
+
+</html>
